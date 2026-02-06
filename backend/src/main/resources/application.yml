@@ -4,17 +4,17 @@ spring:
   application:
     name: backend
   datasource:
-    url: jdbc:h2:mem:h2db
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/prblueprint
+    driver-class-name: org.postgresql.Driver
+    username: blueprint
+    password: 1234
   h2:
     console:
-      enabled: true
+      enabled: false
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
