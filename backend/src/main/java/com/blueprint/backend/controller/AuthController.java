@@ -19,6 +19,10 @@ public class AuthController {
 public User signup(@RequestBody User user){
     return authService.signup(user.getEmail(),user.getName(),user.getPassword());
 }
+@PostMapping("/login")
+public String login(@RequestBody User user){
+    return authService.login(user.getEmail(),user.getPassword());
+}
     
 
 }
