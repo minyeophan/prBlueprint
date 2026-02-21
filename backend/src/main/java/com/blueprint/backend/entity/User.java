@@ -1,4 +1,6 @@
 package com.blueprint.backend.entity;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class User {
         private Long id;
         private String email;
         private String name;
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private String password;
 
         public User() {}
