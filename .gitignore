@@ -1,7 +1,6 @@
 ### IDE ###
 .vscode/
 .idea/
-.claude/
 
 # 개인 계획 문서
 docs/master_plan.md
