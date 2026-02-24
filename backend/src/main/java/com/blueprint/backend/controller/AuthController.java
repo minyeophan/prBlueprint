@@ -12,16 +12,19 @@ import com.blueprint.backend.service.AuthService;
 @RequestMapping("/api/auth")
 public class AuthController {
    private final AuthService authService;
-   public AuthController(AuthService authService){
+
+   public AuthController(AuthService authService) {
     this.authService = authService;
    }
-@PostMapping("/signup")
-public User signup(@RequestBody User user){
-    return authService.signup(user.getEmail(),user.getName(),user.getPassword());
-}
-@PostMapping("/login")
-public String login(@RequestBody User user){
-    return authService.login(user.getEmail(),user.getPassword());
-}
-    
+
+   @PostMapping("/signup")
+   public User signup(@RequestBody User user) {
+       return authService.signup(user.getEmail(), user.getName(), user.getPassword());
+   }
+
+   @PostMapping("/login")
+   public String login(@RequestBody User user) {
+       return authService.login(user.getEmail(), user.getPassword());
+   }
+
 }
