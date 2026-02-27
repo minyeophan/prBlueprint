@@ -9,21 +9,35 @@ import com.blueprint.backend.repository.UserRepository;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    
-    public UserService(UserRepository userRepository){
+    private final UserCacheService userCacheService;
+
+    public UserService(UserRepository userRepository, UserCacheService userCacheService){
         this.userRepository =userRepository;
+        this.userCacheService = userCacheService;
     }
+
+
     
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+    public User getUserById(Long id) throws Exception {
+        User cachedUser = userCacheService.getUser(id);
+        if(cachedUser != null){
+            return cachedUser;
+        }
+        User user = userRepository.findById(id).orElse(null);
+        if(user != null){
+            userCacheService.saveUser(id ,user);
+        }
+        return user;
+        
     }
 
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        userRepository.deleteById(id); 
+        userCacheService.deleteUser(id);
     }
 
     public User createUser(User user) {
