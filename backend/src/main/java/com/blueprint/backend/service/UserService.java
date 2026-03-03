@@ -1,23 +1,18 @@
 package com.blueprint.backend.service;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 import com.blueprint.backend.entity.User;
 import com.blueprint.backend.repository.UserRepository;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private final UserCacheService userCacheService;
 
-    public UserService(UserRepository userRepository, UserCacheService userCacheService){
-        this.userRepository =userRepository;
-        this.userCacheService = userCacheService;
-    }
-
-
-    
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
