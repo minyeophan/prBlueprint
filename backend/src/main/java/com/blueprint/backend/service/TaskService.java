@@ -23,7 +23,8 @@ public class TaskService {
     public Task createTask(Task task){
         return taskRepository.save(task);
     }
-    public Task updateTask(Task task){
+    public Task updateTask(Long id ,Task task){
+        task.setId(id);
         return taskRepository.save(task);
     }
     public void deleteTask(Long id){
