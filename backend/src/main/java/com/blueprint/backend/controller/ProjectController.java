@@ -37,7 +37,7 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    public Project updaProject(@RequestBody Project project){
+    public Project updateProject(@RequestBody Project project){
         return projectService.updateProject(project);
     }
 
